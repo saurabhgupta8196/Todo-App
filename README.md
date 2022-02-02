@@ -6,8 +6,10 @@ https://user-images.githubusercontent.com/42140681/152207612-2c63c268-de4f-427f-
 
 1. Completed the all CRUD operation in Todo App. 
 2. Page is responsive as per different screen sizes.
-3. Tried to add some tests as much as I could.
-4. Component rendering might be slow coz of mock server (maybe in Macbook as i noticed) if u get please click on the any part of page (Might be effective if we use         ChangeDetection which is present in upper versions of angular) 
+3. Added filter functionality to filter the values based on the completion and categories.
+4. Added search functionality to find the items
+5. Tried to add some tests as much as I could.
+6. Component rendering might be slow coz of mock server (maybe in Macbook as i noticed) if u get please click on the any part of page (Might be effective if we use         ChangeDetection which is present in upper versions of angular) 
 
 # TechTest
 
