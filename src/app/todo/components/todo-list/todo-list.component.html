@@ -33,7 +33,7 @@
             <mat-checkbox
               [checked]="todoItem?.done"
               (change)="this.taskStatusChange.emit(todoItem)"
-              [ngClass]="{ 'task-done': todoItem?.done !== false }"
+              [ngClass]="{ 'task-done': !!todoItem?.done }"
               >{{ todoItem?.label }}</mat-checkbox
             >
 
