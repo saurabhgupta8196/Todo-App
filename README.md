@@ -1,6 +1,17 @@
+# Overview
+
+1. Completed the all CRUD operation in Todo App. 
+2. Page is responsive as per different screen sizes.
+3. Tried to add some tests as much as I could.
+4. Component rendering might be slow coz of mock server (maybe in Macbook as i noticed) if u get please click on the any part of page (Might be effective if we use         ChangeDetection which is present in upper versions) 
+
 # TechTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
+
+## Mock Server
+
+Run `npm run server` in order to start mock API service so that we can make API requests
 
 ## Development server
 
@@ -25,4 +36,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-# TodoTechTest
+
