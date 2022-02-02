@@ -1,8 +1,9 @@
 # Overview
 
-Completed the all CRUD operation in Todo App. Page is responsive as per different screen sizes.
-Tried to add some tests as much as I could.
-Component rendering might be slow coz of mock server (maybe in Macbook as i noticed) if u get please click on the any part of page (Might be effective if we use ChangeDetection which is present in upper versions) 
+1. Completed the all CRUD operation in Todo App. 
+2. Page is responsive as per different screen sizes.
+3. Tried to add some tests as much as I could.
+4. Component rendering might be slow coz of mock server (maybe in Macbook as i noticed) if u get please click on the any part of page (Might be effective if we use         ChangeDetection which is present in upper versions) 
 
 # TechTest
 
