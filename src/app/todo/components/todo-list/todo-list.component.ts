@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { MatCheckboxChange } from "@angular/material";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material';
 
-import { categories } from "../../../shared/data/mock-data";
+import { categories } from '../../../shared/data/mock-data';
 
-import { ITodo } from "../../models/todo.interface";
+import { ITodo } from '../../models/todo.interface';
 
 @Component({
-  selector: "origin-todo-app-list",
-  templateUrl: "./todo-list.component.html",
-  styleUrls: ["./todo-list.component.scss"],
+  selector: 'origin-todo-app-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
   @Input() todoList: ITodo[];
@@ -16,36 +16,34 @@ export class TodoListComponent implements OnInit {
   @Output() editTodoItem = new EventEmitter<ITodo>();
   @Output() taskStatusChange = new EventEmitter<MatCheckboxChange>();
 
-  public searchValue = "";
-  public filterCategory = "All";
+  public searchValue = '';
+  public filterCategory = 'All';
   public readonly categories: string[] = categories;
-  private _todoItems;
+  private _todoItems: ITodo[];
 
   public ngOnInit(): void {
     this._todoItems = this.todoList;
     this.rearrangingList();
   }
 
-  /**Filtering the list based on the complete, incomplete and categories selected from dropdown and 
+  /**Filtering the list based on the complete, incomplete and categories selected from dropdown and
    * then rearranging them inorder to consitent with creation and done status of it
    */
 
   public onChange(selectedCategory: string): void {
     this.todoList = this._todoItems;
     switch (selectedCategory) {
-      case "All":
+      case 'All':
         this.todoList = this._todoItems;
         break;
-      case "Completed":
+      case 'Completed':
         this.todoList = this._completeTasks();
         break;
-      case "Incomplete":
+      case 'Incomplete':
         this.todoList = this._incompleteTasks();
         break;
       default:
-        this.todoList = this.todoList.filter(
-          (item) => item.category === selectedCategory
-        );
+        this.todoList = this.todoList.filter((item) => item.category === selectedCategory);
         break;
     }
     this.rearrangingList();
@@ -57,24 +55,22 @@ export class TodoListComponent implements OnInit {
    */
 
   public rearrangingList(): void {
-    const [incompleteTasks, completedTasks] = [
-      this._sortItems(this._incompleteTasks()),
-      this._sortItems(this._completeTasks()),
-    ];
-    this.todoList = incompleteTasks.concat(completedTasks);
+    const [incompleteTasks, completedTasks] = [this._sortItems(this._incompleteTasks()), this._sortItems(this._completeTasks())];
+    this.todoList = completedTasks && incompleteTasks ? incompleteTasks.concat(completedTasks) : null;
   }
 
+  /** Added additional check as Typescript version is lower + test are failing
+   *  otherwise we can use ? safe operator this.todoList?.filter(....) */
+
   private _completeTasks(): ITodo[] {
-    return this.todoList.filter((item) => item.done);
+    return this.todoList ? this.todoList.filter((item) => item.done) : null;
   }
 
   private _incompleteTasks(): ITodo[] {
-    return this.todoList.filter((item) => !item.done);
+    return this.todoList ? this.todoList.filter((item) => !item.done) : null;
   }
 
   private _sortItems(todoItems: ITodo[]): ITodo[] {
-    return todoItems.sort(
-      (a, b) => new Date(b.created).valueOf() - new Date(a.created).valueOf()
-    );
+    return todoItems ? todoItems.sort((a, b) => new Date(b.created).valueOf() - new Date(a.created).valueOf()) : null;
   }
 }

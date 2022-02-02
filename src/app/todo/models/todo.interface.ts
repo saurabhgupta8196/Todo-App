@@ -4,5 +4,5 @@ export interface ITodo {
   done: any;
   id?: number;
   label: string;
-  created: Date
+  created: Date;
 }

@@ -1,24 +1,17 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Optional,
-  Output,
-} from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { MatDialogRef } from "@angular/material/dialog";
-import { Subscription } from "rxjs";
+import { Component, EventEmitter, Input, OnInit, Optional, Output } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
-import { ITodo } from "../../models/todo.interface";
-import { categories } from "../../../shared/data/mock-data";
+import { ITodo } from '../../models/todo.interface';
+import { categories } from '../../../shared/data/mock-data';
 
-import { TodoService } from "../../services/todo.service";
+import { TodoService } from '../../services/todo.service';
 
 @Component({
-  selector: "origin-todo-app-form",
-  templateUrl: "./todo-form.component.html",
-  styleUrls: ["./todo-form.component.scss"],
+  selector: 'origin-todo-app-form',
+  templateUrl: './todo-form.component.html',
+  styleUrls: ['./todo-form.component.scss'],
 })
 
 /**
@@ -56,9 +49,9 @@ export class TodoFormComponent implements OnInit {
     }
 
     this.todoForm = this._formBuilder.group({
-      label: [label || "", Validators.required],
-      description: [description || "", Validators.required],
-      category: [category || "", Validators.required],
+      label: [label || '', Validators.required],
+      description: [description || '', Validators.required],
+      category: [category || '', Validators.required],
       done: [done || false],
       created: [created],
     });
@@ -72,12 +65,7 @@ export class TodoFormComponent implements OnInit {
     if (this.isEditing) {
       this.todoForm.value.id = this.data.id;
       this.todoForm.value.done = false;
-
-      this._subscription.add(
-        this._todoService
-          .updateTodo(this.todoForm.value)
-          .subscribe(() => this._dialogRef.close())
-      );
+      this._subscription.add(this._todoService.updateTodo(this.todoForm.value).subscribe(() => this._dialogRef.close()));
     } else {
       this.createTodoItem.emit({ todoForm: this.todoForm.value });
       this.todoForm.reset();

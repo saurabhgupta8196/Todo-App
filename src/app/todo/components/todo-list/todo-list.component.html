@@ -9,16 +9,11 @@
     <section>
       <mat-form-field appearance="outline">
         <mat-label>Filter by category</mat-label>
-        <mat-select
-          [(ngModel)]="filterCategory"
-          (ngModelChange)="onChange($event)"
-        >
+        <mat-select [(ngModel)]="filterCategory" (ngModelChange)="onChange($event)">
           <mat-option value="All">All</mat-option>
           <mat-option value="Completed">Completed</mat-option>
           <mat-option value="Incomplete">Incomplete</mat-option>
-          <mat-option *ngFor="let category of categories" [value]="category">{{
-            category
-          }}</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -42,11 +37,7 @@
               >{{ todoItem?.label }}</mat-checkbox
             >
 
-            <button
-              *ngIf="!todoItem?.done"
-              mat-button
-              (click)="editTodoItem.emit(todoItem)"
-            >
+            <button *ngIf="!todoItem?.done" mat-button (click)="editTodoItem.emit(todoItem)">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-button (click)="deleteTodoItem.emit(todoItem?.id)">
@@ -56,12 +47,8 @@
           <article>
             <p>Description: {{ todoItem?.description }}</p>
             <p>Category: {{ todoItem?.category }}</p>
-            <p *ngIf="todoItem?.created">
-              Created on: {{ todoItem?.created | date: "medium" }}
-            </p>
-            <p *ngIf="todoItem?.done">
-              Completed at: {{ todoItem?.done | date: "medium" }}
-            </p>
+            <p *ngIf="todoItem?.created">Created on: {{ todoItem?.created | date: 'medium' }}</p>
+            <p *ngIf="todoItem?.done">Completed at: {{ todoItem?.done | date: 'medium' }}</p>
           </article>
         </mat-card>
       </mat-selection-list>

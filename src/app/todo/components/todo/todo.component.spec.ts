@@ -1,19 +1,33 @@
-import { FormBuilder, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
-import { RouterTestingModule } from "@angular/router/testing";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { of } from "rxjs";
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
-import { TodoListComponent } from "../todo-list/todo-list.component";
-import { TodoFormComponent } from "../todo-form/todo-form.component";
+import { SearchPipe } from '../../../shared/lib/search.pipe';
 
-import { NotificationService } from "src/app/shared/services/notification.service";
-import { TodoService } from "../../services/todo.service";
+import { of } from 'rxjs';
 
-import { TodoComponent } from "./todo.component";
+import { TodoListComponent } from '../todo-list/todo-list.component';
+import { TodoFormComponent } from '../todo-form/todo-form.component';
+import { TodoEditDialogComponent } from '../todo-edit-dialog/todo-edit-dialog.component';
+import { CommonDialogComponent } from '../../../shared/components/common-dialog/common-dialog.component';
 
-describe("TodoComponent", () => {
+import { NotificationService } from 'src/app/shared/services/notification.service';
+import { TodoService } from '../../services/todo.service';
+
+import { TodoComponent } from './todo.component';
+
+describe('TodoComponent', () => {
   let component: TodoComponent;
   let fixture: ComponentFixture<TodoComponent>;
 
@@ -21,20 +35,25 @@ describe("TodoComponent", () => {
   let testMockNotificationService;
 
   beforeEach(async(() => {
-    testMockTodoService = jasmine.createSpyObj([
-      "getAllTodos",
-      "createTodo",
-      "deleteTodo",
-    ]);
-    testMockNotificationService = jasmine.createSpyObj(["message"]);
+    testMockTodoService = jasmine.createSpyObj(['getAllTodos', 'createTodo', 'deleteTodo']);
+    testMockNotificationService = jasmine.createSpyObj(['message']);
 
     TestBed.configureTestingModule({
-      declarations: [TodoComponent, TodoFormComponent, TodoListComponent],
+      declarations: [SearchPipe, TodoComponent, TodoFormComponent, TodoListComponent, TodoEditDialogComponent, CommonDialogComponent],
       imports: [
         HttpClientModule,
         RouterTestingModule,
         ReactiveFormsModule,
         FormsModule,
+        MatCardModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatDialogModule,
+        MatInputModule,
+        BrowserAnimationsModule,
       ],
       providers: [
         { provide: TodoService, useValue: testMockTodoService },
@@ -50,7 +69,7 @@ describe("TodoComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

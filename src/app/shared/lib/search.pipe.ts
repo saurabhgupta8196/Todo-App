@@ -1,9 +1,9 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
-import { ITodo } from "../../todo/models/todo.interface";
+import { ITodo } from '../../todo/models/todo.interface';
 
 @Pipe({
-  name: "originSearch",
+  name: 'originSearch',
 })
 export class SearchPipe implements PipeTransform {
   transform(values: ITodo[], args: string): any {

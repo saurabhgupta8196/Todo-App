@@ -1,19 +1,38 @@
-import { SearchPipe } from "../../../shared/lib/search.pipe";
-import { FormsModule } from "@angular/forms";
-import { MatCardModule } from "@angular/material/card";
+import { SearchPipe } from '../../../shared/lib/search.pipe';
 
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { TodoListComponent } from "./todo-list.component";
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatInputModule } from '@angular/material/input';
 
-describe("TodoListComponent", () => {
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { TodoListComponent } from './todo-list.component';
+
+describe('TodoListComponent', () => {
   let component: TodoListComponent;
   let fixture: ComponentFixture<TodoListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TodoListComponent, SearchPipe],
-      imports: [FormsModule, MatCardModule],
+      imports: [
+        BrowserAnimationsModule,
+        FormsModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatIconModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatInputModule,
+      ],
     }).compileComponents();
   }));
 
@@ -23,16 +42,7 @@ describe("TodoListComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it("should display list of todos", () => {
-    fixture.detectChanges();
-
-    const card =
-      fixture.debugElement.nativeElement.querySelectorAll("mat-card");
-
-    expect(card.length).toBe(3);
   });
 });

@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      <h3>{{ isEditing ? "Update todo" : "Add todo" }}</h3>
+      <h3>{{ isEditing ? 'Update todo' : 'Add todo' }}</h3>
     </mat-card-title>
     <button *ngIf="isEditing" mat-button (click)="closeDialog()">
       <mat-icon>close</mat-icon>
@@ -12,64 +12,30 @@
     <form [formGroup]="todoForm">
       <mat-form-field appearance="outline">
         <mat-label>Label</mat-label>
-        <input
-          matInput
-          placeholder="How do u want to label it?"
-          required
-          formControlName="label"
-        />
-        <mat-error *ngIf="hasError('label', 'required')"
-          >Label is required !</mat-error
-        >
+        <input matInput placeholder="How do u want to label it?" formControlName="label" required />
+        <mat-error *ngIf="hasError('label', 'required')">Label is required !</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label> Description</mat-label>
-        <input
-          matInput
-          placeholder="What's is this about?"
-          required
-          formControlName="description"
-        />
-        <mat-error *ngIf="hasError('description', 'required')"
-          >Description is required !</mat-error
-        >
+        <input matInput placeholder="What's is this about?" formControlName="description" required />
+        <mat-error *ngIf="hasError('description', 'required')">Description is required !</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
-        <mat-select
-          formControlName="category"
-          placeholder="Select the category"
-          required
-        >
-          <mat-option *ngFor="let category of categories" [value]="category">{{
-            category
-          }}</mat-option>
+        <mat-select formControlName="category" placeholder="Select the category" required>
+          <mat-option *ngFor="let category of categories" [value]="category">{{ category }}</mat-option>
         </mat-select>
-        <mat-error *ngIf="hasError('category', 'required')"
-          >Category is required!</mat-error
-        >
+        <mat-error *ngIf="hasError('category', 'required')">Category is required!</mat-error>
       </mat-form-field>
     </form>
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button
-      *ngIf="isEditing"
-      mat-raised-button
-      color="primary"
-      (click)="closeDialog()"
-    >
-      Cancel
-    </button>
-    <button
-      mat-raised-button
-      [disabled]="!todoForm.valid"
-      color="primary"
-      (click)="onSubmit()"
-    >
-      {{ isEditing ? "Update todo" : "Add todo" }}
+    <button *ngIf="isEditing" mat-raised-button color="primary" (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button [disabled]="!todoForm.valid" color="primary" (click)="onSubmit()">
+      {{ isEditing ? 'Update todo' : 'Add todo' }}
     </button>
   </mat-card-actions>
 </mat-card>
