@@ -1,0 +1,9 @@
+:host {
+  main {
+    width: 50%;
+    margin: auto;
+    @media (max-width: 1279px) {
+      width: 80%;
+    }
+  }
+}

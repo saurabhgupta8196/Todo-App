@@ -1,0 +1,5 @@
+<section *ngIf="selectedTodoItem$ | async as selectedTodoItem">
+  <mat-dialog-content>
+    <origin-todo-app-form [data]="selectedTodoItem"></origin-todo-app-form>
+  </mat-dialog-content>
+</section>

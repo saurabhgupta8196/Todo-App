@@ -1,0 +1,12 @@
+<main>
+  <origin-todo-app-form
+    (createTodoItem)="createTodoItem($event)"
+  ></origin-todo-app-form>
+  <origin-todo-app-list
+    *ngIf="todoItems$ | async as todos"
+    [todoList]="todos"
+    (deleteTodoItem)="deleteTodoItem($event)"
+    (editTodoItem)="editTodoItem($event)"
+    (taskStatusChange)="taskStatusChange($event)"
+  ></origin-todo-app-list>
+</main>

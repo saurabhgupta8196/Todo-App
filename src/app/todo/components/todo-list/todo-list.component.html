@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h3>Todo list</h3>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <section>
+      <mat-form-field appearance="outline">
+        <mat-label>Filter by category</mat-label>
+        <mat-select
+          [(ngModel)]="filterCategory"
+          (ngModelChange)="onChange($event)"
+        >
+          <mat-option value="All">All</mat-option>
+          <mat-option value="Completed">Completed</mat-option>
+          <mat-option value="Incomplete">Incomplete</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category">{{
+            category
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Search todos by label</mat-label>
+        <input matInput [(ngModel)]="searchValue" name="searchValue" />
+        <button mat-button matSuffix mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </section>
+
+    <ng-container *ngIf="todoList?.length; else noContent">
+      <mat-selection-list>
+        <mat-card *ngFor="let todoItem of todoList | originSearch: searchValue">
+          <mat-card-title>
+            <mat-checkbox
+              [checked]="todoItem?.done"
+              (change)="this.taskStatusChange.emit(todoItem)"
+              [ngClass]="{ 'task-done': todoItem?.done !== false }"
+              >{{ todoItem?.label }}</mat-checkbox
+            >
+
+            <button
+              *ngIf="!todoItem?.done"
+              mat-button
+              (click)="editTodoItem.emit(todoItem)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button (click)="deleteTodoItem.emit(todoItem?.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-title>
+          <article>
+            <p>Description: {{ todoItem?.description }}</p>
+            <p>Category: {{ todoItem?.category }}</p>
+            <p *ngIf="todoItem?.created">
+              Created on: {{ todoItem?.created | date: "medium" }}
+            </p>
+            <p *ngIf="todoItem?.done">
+              Completed at: {{ todoItem?.done | date: "medium" }}
+            </p>
+          </article>
+        </mat-card>
+      </mat-selection-list>
+    </ng-container>
+    <ng-template #noContent>
+      <p>No items !</p>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

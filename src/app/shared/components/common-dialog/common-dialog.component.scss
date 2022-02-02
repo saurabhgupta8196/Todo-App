@@ -1,0 +1,21 @@
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+img {
+  width: 350px;
+  height: 350px;
+  margin-left: 6%;
+
+  @media (max-width: 900px) {
+    width: 250px;
+    height: 250px;
+    margin-left: 10%;
+  }
+}
+.mat-button,
+.mat-raised-button {
+  left: 36%;
+  margin: 10px;
+  background-color: black;
+}

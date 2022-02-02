@@ -1,0 +1,36 @@
+mat-card {
+  margin-top: 1em;
+
+  mat-card-header {
+    background: black;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  mat-form-field {
+    width: 100%;
+    button {
+      height: 1.5rem !important;
+    }
+  }
+}
+
+:host {
+  @media (min-width: 768px) {
+    section {
+      display: flex;
+      > mat-form-field {
+        margin: 5px;
+      }
+    }
+  }
+
+  .task-done {
+    text-decoration: line-through;
+  }
+
+  button {
+    float: right;
+    border-radius: 40%;
+  }
+}

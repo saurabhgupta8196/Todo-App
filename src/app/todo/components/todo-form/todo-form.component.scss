@@ -1,0 +1,26 @@
+:host {
+  mat-card-header {
+    background: black;
+    color: white;
+    margin-bottom: 2rem;
+
+    button {
+      position: absolute;
+      right: 0;
+    }
+  }
+  mat-card-content {
+    margin: 10px;
+  }
+  button {
+    margin: 16px !important;
+  }
+}
+form > mat-form-field {
+  display: block;
+  margin-bottom: 10px;
+}
+.mat-button,
+.mat-raised-button {
+  background-color: black;
+}
